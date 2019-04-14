@@ -32,7 +32,7 @@ Veritabanı ismi yazan yere veritabanı isminizi giriniz.
 
 # Gmail ile giriş
 
-Program'da WebContent -> index.jsp dosyasında bulanan  **<meta name="google-signin-client_id"  content=" *  Buraya google'dan  alınan istemci kimliğini yazınız. * ">**
+Program'da WebContent -> index.jsp dosyasında bulanan  <meta name="google-signin-client_id"  content="   Buraya google'dan  alınan istemci kimliğini yazınız.  ">
 
 ![Gmail](https://github.com/Brkcan/FilmKoleksiyonu/blob/master/images/index.png)
 
