@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Giriş Yapın</title>
+</head>
+<h:body>
+	<h:form styleClass="center">
+		<br> </br>
+		<table>
+			<tr>
+				<td>
+					<h3 align="center">GİRİS SAYFASİ</h3>
+				</td>
+			</tr>
+			<tr>
+				<td><h:outputLabel for="input1">
+						<h:outputText id="name_label" value="Kullanici Adiniz  : " />
+					</h:outputLabel></td>
+				<td><h:inputText id="input1"
+						value="#{kayitManagedBean.kullaniciAdi}" size="20" /></td>
+
+			</tr>
+			<tr>
+				<td><h:outputLabel for="input2">
+						<h:outputText id="password_Label" value="Sifreniz   :  " />
+					</h:outputLabel></td>
+				<td><h:inputSecret id="input2"
+						value="#{kayitManagedBean.password}" size="20" /></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><h:commandButton id="LOGIN"
+						action="#{kayitManagedBean.girisEslesme}" value="Giris" /></td>
+			</tr>
+		</table>
+	</h:form>
+</h:body>
+</html>

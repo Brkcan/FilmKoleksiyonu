@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+<h:head>
+	<script>
+		
+	</script>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+	<title>Film Tanimi</title>
+</h:head>
+<h:body>
+	<h:form id="FilmTanimi">
+		<br> </br>
+	
+		<table>
+			<tr>
+				<td><h:outputLabel for="input1">
+						<h:outputText id="film_name" value="Film Adi  : " />
+					</h:outputLabel></td>
+				<td><h:inputText id="input1" value="#{kayitManagedBean.filmAd}"
+						size="20" /></td>
+
+			</tr>
+			<tr>
+				<td><h:outputLabel for="input2">
+						<h:outputText id="film_tarih" value="Film yayin tarihi  :    " />
+					</h:outputLabel></td>
+				<td><p:inputMask id="input2"  placeholder="yyyy" 
+						value="#{kayitManagedBean.filmYayinYili}" size="20" mask="9999" /></td>
+			</tr>
+			<tr>
+				<td><h:outputLabel for="input3">
+						<h:outputText id="film_tur" value="Film tur  :  " />
+					</h:outputLabel></td>
+				<td><h:inputText id="input3"  
+						value="#{kayitManagedBean.filmTur}" size="20" /></td>
+			</tr>
+			<tr>
+				<td><h:outputLabel for="input4">
+						<h:outputText id="film_acıklama" value="Film Acıklama : " />
+					</h:outputLabel></td>
+				<td><h:inputTextarea id="input4"
+						value="#{kayitManagedBean.filmAciklama}" size="20" /></td>
+			</tr>
+			<tr>
+				<td><h:outputLabel for="input5">
+						<h:outputText id="film_medya" value="Film Medya  : " />
+					</h:outputLabel></td>
+				<td> <h:graphicImage id="input5"
+						library="images" name="img_2.jpg"  width="40" height="60"></h:graphicImage></td>
+			</tr>
+			<tr>
+				<td><h:selectManyCheckbox
+						value="#{kayitManagedBean.filmDilSecenegi}">
+						<f:selectItem itemValue="Turkce" itemLabel="Turkce" />
+						<f:selectItem itemValue="English" itemLabel="English" />
+						<f:selectItem itemValue="France" itemLabel="France" />
+						<f:selectItem itemValue="Japanese" itemLabel="Japanese" />
+					</h:selectManyCheckbox></td>
+			</tr>
+			<tr>
+				<td>
+					<hr></hr>
+				</td>
+			</tr>
+			<!-- ajax tekrqr denenecek!!!!  SelectOneMenu value=""  kısmında hata olabilir... -->
+			<p:fragment>
+
+				<h:panelGrid colums="4" cellpadding="5">
+					<p:outputLabel for="oyuncu_ad" value="Oyuncu Adi : " />
+					<p:inputText id="oyuncu_ad"
+						value="#{kayitManagedBean.filmOyuncuAd}" />
+					<p:outputLabel for="oyuncu_Soyad" value="Oyuncu Soyad : " />
+					<p:inputText id="oyuncu_Soyad"
+						value="#{kayitManagedBean.filmOyuncuSoyad}" />
+					<p:outputLabel for="oyuncu_rol" value="Oyuncu Rol : " />
+					<p:inputText id="oyuncu_rol"
+						value="#{kayitManagedBean.filmOyuncuRol}" />
+					<p:commandButton action="#{kayitManagedBean.filmOyuncusuEkle}"
+						id="button" value="Oyuncu Ekle"
+						onclick="alert('Yeni oyuncuları giriniz...');">
+					</p:commandButton>
+				</h:panelGrid>
+			</p:fragment>
+
+			<tr>
+				<td></td>
+				<td><p:commandButton id="LOGIN"
+						action="#{kayitManagedBean.filmEkle}" value="Film Ekle" /></td>
+			</tr>
+
+		</table>
+	</h:form>
+</h:body>
+
+
+</html>

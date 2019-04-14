@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Film Anasayfasi</title>
+</head>
+<h:body>
+	<h:form>
+		<br> </br>
+		<h:dataTable id="dataTable" value="#{kayitManagedBean.filmTanimis}"
+			var="myFilmTanimi">
+			<f:facet name="caption">FİLMLERİM</f:facet>
+			<h:column>
+				<f:facet name="header">Film Adi </f:facet>
+				#{myFilmTanimi.filmAd} 
+				<h:inputText value="#{myFilmTanimi.filmAd}"
+					rendered="#{myFilmTanimi.edit}"></h:inputText>
+				<h:outputText value="#{myFilmTanimi.filmAd}"
+					rendered="#{not myFilmTanimi.edit} "></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<p:commandLink action="#{kayitManagedBean.siralamaFilmYayinYili}">
+				filmYayinYili
+				</p:commandLink>
+				</f:facet>
+				#{myFilmTanimi.filmYayinYili}
+				<h:inputText value="#{myFilmTanimi.filmYayinYili}"
+					rendered="#{myFilmTanimi.edit}"></h:inputText>
+				<h:outputText value="#{myFilmTanimi.filmYayinYili}"
+					rendered="#{not myFilmTanimi.edit} "></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Film Tür</f:facet>
+				#{myFilmTanimi.filmTur}
+				<h:inputText value="#{myFilmTanimi.filmTur}"
+					rendered="#{myFilmTanimi.edit}"></h:inputText>
+				<h:outputText value="#{myFilmTanimi.filmTur}"
+					rendered="#{not myFilmTanimi.edit} "></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Film Acıklama</f:facet>
+				#{myFilmTanimi.filmAciklama}
+				<h:inputText value="#{myFilmTanimi.filmAciklama}"
+					rendered="#{myFilmTanimi.edit}"></h:inputText>
+				<h:outputText value="#{myFilmTanimi.filmAciklama}"
+					rendered="#{not myFilmTanimi.edit} "></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Film Medya</f:facet>
+				#{myFilmTanimi.filmMedya}
+				<h:graphicImage library="images" name="img_1.jpg" width="20"
+					size="20" rendered="#{myFilmTanimi.edit}"></h:graphicImage>
+				<h:graphicImage library="images" name="img_1.jpg" width="20"
+					size="20" rendered="#{not myFilmTanimi.edit} "></h:graphicImage>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Film Dil Seceneği</f:facet>
+				<c:forEach var="lang" items="#{kayitManagedBean.filmDilSecenegi}">
+					<p>${lang}</p>
+				</c:forEach>
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Delete</f:facet>
+				<p:commandButton value="Delete"
+					action="#{kayitManagedBean.deleteFilmTanimi(myFilmTanimi.id)}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Güncellleme Durumu</f:facet>
+				<p:commandButton value="Güncelle"
+					action="#{kayitManagedBean.guncellemeDurumu(myFilmTanimi)}"
+					rendered="#{not myFilmTanimi.edit}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Arama</f:facet>
+				<p:commandButton action="#{kayitManagedBean.aramaSayfasi()}"
+					value="ARAMA"></p:commandButton>
+			</h:column>
+			<hr></hr>
+			<h:column>
+				<f:facet name="header">Yeni Film Ekle</f:facet>
+				<p:commandButton action="#{kayitManagedBean.yeniFilmEkle}"
+					value="Yeni Film Ekle"></p:commandButton>
+			</h:column>
+			<hr></hr>
+
+		</h:dataTable>
+		<hr></hr>
+		<h:commandLink value="Kaydet"
+			action="#{kayitManagedBean.degisikligiKaydet()}" />
+
+		<br></br>
+
+		<h:dataTable id="datatable" value="#{kayitManagedBean.oyuncular}"
+			var="myOyuncuListesi">
+			<f:facet name="caption">Film Oyuncu Listesi</f:facet>
+			<h:column>
+				<f:facet name="header">Oyuncu Adi</f:facet>
+				<h:inputText value="#{myOyuncuListesi.filmOyuncuAd}"
+					rendered="#{myOyuncuListesi.oyuncuEdit}"></h:inputText>
+				<h:outputText value="#{myOyuncuListesi.filmOyuncuAd}"
+					rendered="#{not myOyuncuListesi.oyuncuEdit}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Oyuncu Soyad</f:facet>
+				<h:inputText value="#{myOyuncuListesi.filmOyuncuSoyad}"
+					rendered="#{myOyuncuListesi.oyuncuEdit}"></h:inputText>
+				<h:outputText value="#{myOyuncuListesi.filmOyuncuSoyad}"
+					rendered="#{not myOyuncuListesi.oyuncuEdit}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Oyuncu Rol</f:facet>
+				<h:inputText value="#{myOyuncuListesi.filmOyuncuRol}"
+					rendered="#{myOyuncuListesi.oyuncuEdit}"></h:inputText>
+				<h:outputText value="#{myOyuncuListesi.filmOyuncuRol}"
+					rendered="#{not myOyuncuListesi.oyuncuEdit}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Delete</f:facet>
+				<p:commandButton value="Delete"
+					action="#{kayitManagedBean.deletefilmOyuncuBilgileri(myOyuncuListesi.id)}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Güncellleme Durumu</f:facet>
+				<p:commandButton value="Güncelle"
+					action="#{kayitManagedBean.guncellemeDurumuFilmOyuncusu(myOyuncuListesi)}"
+					rendered="#{not myOyuncuListesi.oyuncuEdit}" />
+			</h:column>
+		</h:dataTable>
+		<hr></hr>
+		<h:commandLink value="Kaydet"
+			action="#{kayitManagedBean.degisikligiKaydetFilmOyuncuListesi()}" />
+	</h:form>
+	<hr />
+</h:body>
+</html>
+
+
+

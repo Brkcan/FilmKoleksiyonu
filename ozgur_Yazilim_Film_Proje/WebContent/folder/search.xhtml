@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Arama Sayfasi</title>
+</head>
+<h:body>
+	<h:form>
+		<br></br>
+		<h:inputText id="test" value="#{kayitManagedBean.kelime}">
+		</h:inputText>
+		<p:commandButton action="#{kayitManagedBean.SearchButton}"
+			value="Film Ara" />
+		
+		<h:dataTable id="dataSearch" value="#{kayitManagedBean.details}"
+			var="myAra">
+			<f:facet name="Arama Sonucları">Arama Sonucları</f:facet>
+
+			<h:column>
+
+				<tr>
+					<td><h:outputLabel for="input1">
+							<h:outputText id="film_name" value="Film Adi  : " />
+						</h:outputLabel></td>
+					<td><h:outputText value="#{myAra.filmAd}" /></td>
+				</tr>
+				<br></br>
+				<tr>
+					<td><h:outputLabel for="input2">
+							<h:outputText id="film_tarih" value="Film yayin tarihi  :    " />
+						</h:outputLabel></td>
+					<td><h:outputText value="#{myAra.filmYayinYili}" /></td>
+				</tr>
+
+				<br></br>
+				<tr>
+					<td><h:outputLabel for="input4">
+							<h:outputText id="film_acıklama" value="Film Acıklama : " />
+						</h:outputLabel></td>
+					<td><h:outputText value="#{myAra.filmAciklama}" /></td>
+				</tr>
+				<br></br>
+				<tr>
+					<td><h:outputLabel for="input3">
+							<h:outputText id="film_tur" value="Film tur  :  " />
+						</h:outputLabel></td>
+					<td><h:outputText value="#{myAra.filmTur}" /></td>
+				</tr>
+				<br></br>
+				<tr>
+				</tr>
+				<tr>
+					<td><h:outputLabel for="input5">
+							<h:outputText id="film_medya" value="Film Medya  : " />
+						</h:outputLabel></td>
+					<td><h:graphicImage library="images" name="img_1.jpg"
+							width="40" height="50" /></td>
+				</tr>
+				<br></br>
+
+				<tr>
+					<td><h:outputLabel for="input6">
+							<h:outputText id="film_Dil" value="Film Dil :" />
+						</h:outputLabel></td>
+					<td><c:forEach var="lang"
+							items="#{kayitManagedBean.filmDilSecenegi}">
+							<p>${lang}</p>
+						</c:forEach></td>
+				</tr>
+			</h:column>
+
+		</h:dataTable>
+		<hr></hr>
+		<h:dataTable id="dataSearchOyuncu"
+			value="#{kayitManagedBean.oyuncuDatails}" var="myAraOyuncu">
+			<h:column>
+				<tr>
+					<td><h:outputLabel for="input7">
+							<h:outputText id="film_oyuncu_Ad" value="Film Oyunucu Ad  : " />
+						</h:outputLabel></td>
+					<td><h:outputText value="#{myAraOyuncu.filmOyuncuAd}" /></td>
+				</tr>
+				<br></br>
+				<tr>
+					<td><h:outputLabel for="input8">
+							<h:outputText id="film_oyuncu_Soyad"
+								value="Film Oyunucu Soyad  : " />
+						</h:outputLabel></td>
+					<td><h:outputText value="#{myAraOyuncu.filmOyuncuSoyad}"></h:outputText>
+					</td>
+				</tr>
+				<br></br>
+				<tr>
+					<td><h:outputLabel for="input9">
+							<h:outputText id="film_oyuncu_Rol" value="Film Oyunucu Rol  : " />
+						</h:outputLabel></td>
+					<td><h:outputText value="#{myAraOyuncu.filmOyuncuRol}"></h:outputText>
+					</td>
+				</tr>
+			</h:column>
+		</h:dataTable>
+		<p:commandButton action="#{kayitManagedBean.filmAnasayfa()}"
+			value="Filmlerim Sayfasi" />
+	</h:form>
+</h:body>
+</html>
